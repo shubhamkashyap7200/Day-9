@@ -124,3 +124,48 @@ print(stringRandomNumbers)
 
 // Trailing Closure
 // Trailing Closure syntax is designed to make Swift code easier to read
+
+func animate(duration: Double, animations: () -> Void) {
+    print("Starting a \(duration) second animation…")
+    animations()
+}
+
+animate(duration: 10.0) {
+    print("Fade new screen")
+}
+
+// How to accept functions as parameters // Closures
+func makeArray(size: Int, using generator: () -> Int) -> [Int] {
+    var numbers = [Int]()
+    
+    for _ in 0..<size {
+        let newNumber = generator()
+        numbers.append(newNumber)
+    }
+    
+    return numbers
+}
+
+let rollDice = makeArray(size: 5) {
+    return Int.random(in: 1...10)
+}
+
+print(rollDice)
+
+func doImportantWork(first: () -> Void, second: () -> Void, third: () -> Void) {
+    print("About to start first work")
+    first()
+    print("About to start second work")
+    second()
+    print("About to start third work")
+    third()
+    print("Done!")
+}
+
+doImportantWork {
+    print("First")
+} second: {
+    print("Second")
+} third: {
+    print("Third")
+}
