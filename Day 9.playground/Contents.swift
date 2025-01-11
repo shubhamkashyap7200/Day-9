@@ -169,3 +169,49 @@ doImportantWork {
 } third: {
     print("Third")
 }
+
+let resignation = { (name: String) in
+    print("Dear \(name), I'm outta here!")
+}
+func printDocument(contents: () -> Void) {
+    print("Connecting to printer...")
+    print("Sending document...")
+    contents()
+}
+
+func doTricks(_ tricks: () -> Void) {
+    print("Start recording now!")
+    tricks()
+    print("Did you get all that?")
+}
+
+func tendGarden(activities: () -> Void) {
+    print("I love gardening")
+    activities()
+}
+
+tendGarden {
+    print("Let's grow some roses!")
+}
+
+func goCamping(then action: () -> Void) {
+    print("We're going camping!")
+    action()
+}
+goCamping {
+    print("Sing songs")
+    print("Put up tent")
+    print("Attempt to sleep")
+}
+
+// Checkpoint 5
+let luckyNumbers = [7, 4, 38, 21, 16, 15, 12, 33, 31, 49]
+let luckyEvenNumbersF = luckyNumbers.filter { !$0.isMultiple(of: 2) }
+let luckyEvenNumbersFS = luckyEvenNumbersF.sorted { $0 < $1 }
+let luckyEvenNumbersFSM = luckyEvenNumbersFS.map { String("\($0) is a lucky number") }
+print()
+print()
+print(luckyEvenNumbersFSM)
+
+let finalOutput = luckyNumbers.filter { !$0.isMultiple(of: 2) }.sorted { $0 < $1}.map { String("\($0) is a lucky number")}
+print(finalOutput)
